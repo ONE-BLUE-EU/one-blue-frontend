@@ -1,0 +1,56 @@
+{
+  "index.css": {
+    "file": "css/index.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "assets": [
+      "media/logo.png",
+      "media/one-blue-blue.png",
+      "media/eu-notice.png",
+      "media/Roboto-Regular-webfont.woff",
+      "media/Roboto-Thin-webfont.woff",
+      "media/Roboto-ThinItalic-webfont.woff",
+      "media/Roboto-Medium-webfont.woff",
+      "media/Roboto-MediumItalic-webfont.woff"
+    ],
+    "css": [
+      "css/index.css"
+    ],
+    "file": "js/index.js",
+    "isEntry": true,
+    "src": "index.html"
+  },
+  "src/theme/fonts/roboto/Roboto-Medium-webfont.woff": {
+    "file": "media/Roboto-Medium-webfont.woff",
+    "src": "src/theme/fonts/roboto/Roboto-Medium-webfont.woff"
+  },
+  "src/theme/fonts/roboto/Roboto-MediumItalic-webfont.woff": {
+    "file": "media/Roboto-MediumItalic-webfont.woff",
+    "src": "src/theme/fonts/roboto/Roboto-MediumItalic-webfont.woff"
+  },
+  "src/theme/fonts/roboto/Roboto-Regular-webfont.woff": {
+    "file": "media/Roboto-Regular-webfont.woff",
+    "src": "src/theme/fonts/roboto/Roboto-Regular-webfont.woff"
+  },
+  "src/theme/fonts/roboto/Roboto-Thin-webfont.woff": {
+    "file": "media/Roboto-Thin-webfont.woff",
+    "src": "src/theme/fonts/roboto/Roboto-Thin-webfont.woff"
+  },
+  "src/theme/fonts/roboto/Roboto-ThinItalic-webfont.woff": {
+    "file": "media/Roboto-ThinItalic-webfont.woff",
+    "src": "src/theme/fonts/roboto/Roboto-ThinItalic-webfont.woff"
+  },
+  "src/theme/images/eu-notice.png": {
+    "file": "media/eu-notice.png",
+    "src": "src/theme/images/eu-notice.png"
+  },
+  "src/theme/images/logo.png": {
+    "file": "media/logo.png",
+    "src": "src/theme/images/logo.png"
+  },
+  "src/theme/images/one-blue-blue.png": {
+    "file": "media/one-blue-blue.png",
+    "src": "src/theme/images/one-blue-blue.png"
+  }
+}

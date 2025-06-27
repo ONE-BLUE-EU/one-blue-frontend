@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Dublin City University",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Dublin_City_University_Logo.svg/2560px-Dublin_City_University_Logo.svg.png",
+    "description": "",
+    "searchUrl":"/search/?publisher__name=Dublin City University"
+  },
+  {
+    "name": "National Research Council of Italy (CNR)",
+    "imageUrl": "https://eurogoos.eu/wp-content/uploads/Consiglio_Nazionale_delle_Ricerche_logo_verticale.png",
+    "description": "",
+    "searchUrl":"/search/?publisher__name=National Research Council of Italy (CNR)"
+  }
+]

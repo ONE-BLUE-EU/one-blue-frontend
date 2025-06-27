@@ -1,0 +1,40 @@
+@import "../variables";
+
+.site-header {
+  background-color: rgb(42, 108, 163);
+  .container {
+    display: flex;
+    justify-content: space-between;
+    }
+}
+
+.dc-header {
+  .dc-logo {
+    margin: 10px 10px 10px 0;
+    display: inline-block;
+    img {
+      max-width: 120px;
+    }
+  }
+  .dc-site-name {
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 1em;
+    margin-bottom: 10px;
+    a {
+      color: $heroHeadingColor;
+      font-size: 1.8rem;
+    }
+  }
+  .dc-slogan {
+    margin-top: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+    .dc-logo,
+    .site-name {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "hero": [
+    {
+      "title": "Welcome to the CECsMarineDB",
+      "intro": "CECsMarineDB is the open and FAIR database of the ONE-BLUE project. It hosts data on concentrations, profiles, fate, behaviour, and effects of CECs, for different marine compartments and ecosystemse.",
+      "ref": "0"
+    }
+  ],
+  "stats": [
+    {
+      "content": "Datasets",
+      "title": "24",
+      "icon": "database",
+      "ref": "1"
+    },
+    {
+      "content": "API Queries Run",
+      "title": "317k",
+      "icon": "sync",
+      "ref": "2"
+    },
+    {
+      "content": "Total Datasets",
+      "title": "2.63k",
+      "icon": "database",
+      "ref": "3"
+    }
+  ]
+}

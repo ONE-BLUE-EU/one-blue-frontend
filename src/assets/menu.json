@@ -1,0 +1,42 @@
+{
+  "main": [
+    {
+      "label": "Home",
+      "url": "/",
+      "target": "_top"
+    },
+    {
+      "label": "Data",
+      "url": "/search",
+      "target": "_top"
+    },
+    {
+      "label": "Contributors",
+      "url": "/publishers",
+      "target": "_top"
+    },
+    {
+      "label": "About",
+      "url": "/about",
+      "target": "_top"
+    },
+    {
+      "label": "API",
+      "url": "/api",
+      "target": "_top"
+    }
+  ],
+  "footer1": [
+    {
+      "label": "The ONE-BLUE Data management Plan",
+      "url": "#",
+      "target": "_blank"
+    },
+    {
+      "label": "The ONE-BLUE Data Dictionary",
+      "url": "#"
+    }
+  ],
+  "footer2": [
+  ]
+}
