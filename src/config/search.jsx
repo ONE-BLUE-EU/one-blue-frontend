@@ -2,7 +2,7 @@ import React from 'react';
 
 export const defaultFacets = {
   "theme": {
-    "label": "Campaigns",
+    "label": "Themes",
     "field": "theme.0.title",
     "showAll": false,
     "limit": 10,

@@ -14,6 +14,8 @@ import {
   TopicWrapper
 } from "@civicactions/data-catalog-components";
 import orgs from "../../assets/publishers";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 const Dataset = () => {
   const { id } = useParams();
@@ -46,7 +48,6 @@ const Dataset = () => {
   } else {
     renderOrg = <Organization name={orgName} description={orgDesc}/>;
   }
-
 
   const tag = "keyword" in item ? item.keyword : [];
   const theme = "theme" in item ? item.theme : [];
@@ -138,17 +139,40 @@ const Dataset = () => {
             <div>
               <h1>{item.title}</h1>
             {theme.length > 0 && <div className="dc-item-theme">{themes(theme)}</div>}
-            <Text value={item.description} />
-            {(hasWindow && item.distribution) &&
-              item.distribution.map(dist => {
-                return <ResourceTemplate key={dist.identifier} resource={dist} identifier={dist.identifier} />;
-              })}
-            <Tags tags={tag} path="/search?keyword=" label="Tags" />
-            <Table
-              configuration={labelsT3}
-              data={valuesT3}
-              tableclass="metadata"
-            /></div>
+            <Tabs>
+    <TabList>
+      <Tab>Metadata</Tab>
+      {<Tab disabled={!hasWindow || !item.distribution}>Data</Tab>}
+    </TabList>
+
+    <TabPanel>
+      <div>
+                <Text value={item.description} />
+              
+              <Tags tags={tag} path="/search?keyword=" label="Tags" />
+              <Table
+                configuration={labelsT3}
+                data={valuesT3}
+                tableclass="metadata"
+              /></div>
+    </TabPanel>
+    <TabPanel>
+      {(hasWindow && item.distribution) &&
+                item.distribution.map(dist => {
+                  // Create a modified version of dist if title equals "test"
+                  const modifiedDist = {
+                    ...dist,
+                    data: {
+                      ...dist.data,
+                      title: dist.data?.title === "test" ? "Samples" : dist.data?.title
+                    }
+                  };
+                  return <ResourceTemplate key={dist.identifier} resource={modifiedDist} identifier={dist.identifier} />;
+                })}
+    </TabPanel>
+  </Tabs>
+            
+            </div>
             ):( <div className="row">
             <Spinner color="primary" className="m-auto"/>
           </div>

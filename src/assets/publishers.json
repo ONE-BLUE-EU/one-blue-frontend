@@ -10,5 +10,29 @@
     "imageUrl": "https://eurogoos.eu/wp-content/uploads/Consiglio_Nazionale_delle_Ricerche_logo_verticale.png",
     "description": "",
     "searchUrl":"/search/?publisher__name=National Research Council of Italy (CNR)"
+  },
+  {
+    "name": "Instituto de Ciencias del Mar (ICM) - CSIC",
+    "imageUrl": "https://maritime-forum.ec.europa.eu/sites/default/files/styles/embed_medium/public/2020-07/icm-logo_0.png?itok=epeyP5JO",
+    "description": "",
+    "searchUrl":"/search/?publisher__name=Instituto de Ciencias del Mar (ICM) - CSIC"
+  },
+  {
+    "name": "Hellenic Centre for Marine Research (HCMR)",
+    "imageUrl": "https://lp.gr/wp-content/uploads/2017/12/hcmr-logo-1.png",
+    "description": "",
+    "searchUrl":"/search/?publisher__name=Hellenic Centre for Marine Research (HCMR)"
+  },
+  {
+    "name": "Alfred Wegener Institute (AWI)",
+    "imageUrl": "https://mvre.webodv.cloud.awi.de/images/AWI_LOGO_Sonderform.png",
+    "description": "",
+    "searchUrl":"/search/?publisher__name=Alfred Wegener Institute (AWI)"
+  },
+  {
+    "name": "Venthic Technologies",
+    "imageUrl": "https://www.venthic.com/sites/default/files/images/venthic-og1.jpg",
+    "description": "",
+    "searchUrl":"/search/?publisher__name=Venthic Technologies"
   }
 ]

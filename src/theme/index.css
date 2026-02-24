@@ -412,6 +412,7 @@ dc-menu .dc-menu-item {
   list-style: none;
   margin-bottom: 2rem;
   word-break: break-word;
+  position:relative;
 }
 .dc-search-list-item a {
   color: #162e51;
@@ -433,6 +434,7 @@ dc-menu .dc-menu-item {
 }
 .dc-search-list-item .dc-item-publisher svg {
   margin-right: 1rem;
+  display: none;
 }
 .dc-search-list-item .dc-item-publisher svg path {
   fill: rgb(42, 108, 163);
@@ -580,12 +582,20 @@ dc-menu .dc-menu-item {
   border-right-color: rgb(14, 6, 6);
 }
 
+.dc-search-list-item .dc-item-theme {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.7em;
+  font-weight: 700;
+}
 .dc-topic-wrapper {
-  padding: 5px 20px 5px 0;
+  padding: 5px 20px 5px 0 !important;
 }
 .dc-topic-wrapper svg {
   margin-right: 6px;
   fill: rgb(42, 108, 163);
+  display:none;
 }
 
 a.dc-topic-wrapper:focus, a.dc-topic-wrapper:hover {
@@ -810,22 +820,22 @@ a.dc-topic-wrapper:focus svg, a.dc-topic-wrapper:hover svg {
 .dc-footer .branding p:last-child {
   line-height: 2rem;
 }
-.dc-footer .branding .social {
+.dc-footer .social {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.dc-footer .branding .social a {
+.dc-footer a {
   margin-right: 20px;
   padding: 10px;
   background-color: #2a6ca3;
   border-radius: 50%;
   font-size: 18px;
 }
-.dc-footer .branding .social a svg {
+.dc-footer .social a svg {
   opacity: 0.5;
   margin-top: -5px;
 }
-.dc-footer .branding .social a svg:hover {
+.dc-footer .social a svg:hover {
   opacity: 1;
 }
 @media screen and (max-width: 768px) {
@@ -1280,3 +1290,7 @@ ul.mr-auto.nav {
 }
 
 /*# sourceMappingURL=index.css.map */
+
+#resource .dc-file-download {
+  display: none;
+}

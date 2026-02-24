@@ -15,8 +15,14 @@ const ResourceTemplate = ({ resource }) => {
 
   return (
     <div id={`resource_${resource.identifier}`}>
+      <FileDownload
+            title={resource.data.title}
+            label={resource.data.downloadURL}
+            format={format}
+            downloadURL={resource.data.downloadURL}
+          />
       {format.toLowerCase() === 'csv'
-        ? (
+        && (
           <Resource
             apiURL={rootURL}
             id={resource.identifier}
@@ -25,14 +31,6 @@ const ResourceTemplate = ({ resource }) => {
             format={format}
             downloadURL={downloadURL}
             accessURL={accessURL}
-          />
-        )
-        : (
-          <FileDownload
-            title={resource.data.title}
-            label={resource.data.downloadURL}
-            format={format}
-            downloadURL={resource.data.downloadURL}
           />
         )
       }
