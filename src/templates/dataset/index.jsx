@@ -3,8 +3,11 @@ import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import config from "../../assets/config";
+import DataResources, { CampaignOverview } from "../../components/Resource/DataResources";
 import ResourceTemplate from "../../components/Resource";
-import { Spinner } from 'reactstrap';
+import useCampaignData from "../../components/Resource/useCampaignData";
+import { isSamplingCampaign } from "../../components/Resource/summary";
+import { ConfigProvider, Spin } from "antd";
 import {
   Text,
   Organization,
@@ -36,6 +39,8 @@ const Dataset = () => {
     }
   });
   const item = data ? data : {};
+  const campaign = isSamplingCampaign(item.theme);
+  const campaignGroups = useCampaignData(item.distribution || [], campaign);
 
   const orgName =
     "publisher" in item && item.publisher ? item.publisher.data.name : "";
@@ -118,11 +123,13 @@ const Dataset = () => {
     valuesT3.homepage = `<a href="${item.landingPage}">${item.landingPage}</a>`;
   }
   return (
+    <ConfigProvider theme={{ token: { fontFamily: "inherit", colorPrimary: "#2a6ca3" } }}>
     <Layout title={`Dataset - ${item.title}`}>
       <div className={`dc-dataset-page ${config.container}`}>
         <div className="row">
           <div className="col-md-3 col-sm-12">
             {renderOrg}
+            {campaign && <CampaignOverview groups={campaignGroups} />}
             <div className="dc-block-wrapper">
               The information on this page is also available via the{" "}
               <Link
@@ -157,30 +164,22 @@ const Dataset = () => {
               /></div>
     </TabPanel>
     <TabPanel>
-      {(hasWindow && item.distribution) &&
-                item.distribution.map(dist => {
-                  // Create a modified version of dist if title equals "test"
-                  const modifiedDist = {
-                    ...dist,
-                    data: {
-                      ...dist.data,
-                      title: dist.data?.title === "test" ? "Samples" : dist.data?.title
-                    }
-                  };
-                  return <ResourceTemplate key={dist.identifier} resource={modifiedDist} identifier={dist.identifier} />;
-                })}
+      {(hasWindow && item.distribution) && (campaign
+        ? <DataResources resources={item.distribution} groups={campaignGroups} />
+        : item.distribution.map(resource => <ResourceTemplate key={resource.identifier} resource={resource} />))}
     </TabPanel>
   </Tabs>
             
             </div>
-            ):( <div className="row">
-            <Spinner color="primary" className="m-auto"/>
+            ):( <div className="row" role="status" aria-label="Loading dataset">
+            <Spin size="small" className="m-auto"/>
           </div>
         )}
           </div>
         </div>
       </div>
       </Layout>
+    </ConfigProvider>
   );
 };
 

@@ -6,6 +6,54 @@ This is a REACT frontend designed to utilize the latest stable version of [DKAN 
 
 This application uses the [data-catalog-components](https://github.com/GetDKAN/data-catalog-components) library.
 
+## Dataset Data tab
+
+Only datasets with the **Sampling campaign** theme (case-insensitive) use the
+Ant Design campaign interface. Other datasets retain their original file titles,
+download links and catalog table previews.
+
+The campaign sidebar shows merged samples (unique sampling calendar dates in
+`date_of_sampling_start` plus latitude/longitude), unique compounds from the
+chemical-compounds files, and total analytical-results rows. The overview loads
+on Metadata and stays visible on Data.
+
+Four cards appear in order on desktop, wrapping on smaller screens:
+
+- **Samples:** total rows, stations (distinct latitude/longitude), sampling date range.
+- **Chemical compounds:** distinct `susdat_id` values, falling back to substance names.
+- **Analytical methods:** distinct `anal_method_serial_no` values.
+- **Analytical results:** total rows, analyzed samples matched by sample tag/code to
+  Samples and merged by date/coordinates, and distinct detected compounds.
+
+Each card has matching **Explore** and **Download** controls with Lucide icons
+(yellow/orange Explore, blue Download). Campaign components inherit the site's
+fonts, and the overview header uses the navigation bar's blue with white text.
+The dataset page uses the same Ant Design spinner as the overview while loading.
+Exploration opens an
+Ant Design table in a modal. Analytical results are pivoted into compound rows and
+sample-tag columns. Cells retain every detected concentration and its original units;
+method IDs are not displayed, but results from different methods are never averaged
+or silently overwritten. `<LOD` and `<LOQ` labels are shown without units.
+Hover or focus these labels to see the same result row's `limit_of_detection` or
+`limit_of_quantification`, respectively, including concentration units. Missing
+limits are explicitly shown as **Unavailable** in the tooltip.
+Unavailable concentrations (`NS`, `N/A`, blank values, or "Concentration unavailable")
+and missing/non-detected results display a single dash, without units. If a cell
+also has valid concentrations, only those valid values are shown.
+Use the substance column's filter to search by name or ID (case-insensitive,
+partial matches); **Reset** clears the search.
+Numeric table values omit redundant trailing zeros, and column labels retain
+their source field names, including underscores.
+Detections are rows whose `detection_characterisation` starts with "detected".
+Missing and non-detected concentrations are never displayed as zero.
+Results missing a compound identity or sample tag are reported above the table.
+
+Summaries load all datastore pages (500 rows per request), not just the visible
+table page. Missing files, required values or ambiguous sample matches are shown
+as **Unavailable**, not a partial count. Request errors include a retry control,
+and downloads remain accessible. Multiple CSVs of one type share a card and each
+has its own download button.
+
 ## Requirements
 - Node ^16
 
@@ -62,7 +110,8 @@ You will also see any lint errors in the console.
 
 ### `npm run test`
 
-Launches [vitest](https://vitest.dev/) and runs any found test files. The demo app does not currently contain any Vitest / Jest tests.
+Launches [vitest](https://vitest.dev/). Run the dataset-summary tests once with
+`npm test -- --run src/components/Resource/summary.test.js`.
 
 ### `npm run build`
 

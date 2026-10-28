@@ -1,4 +1,8 @@
 context('Dataset stubbed', () => {
+  const openDataTables = () => {
+    cy.findByRole('tab', { name: 'Data', exact: true }).click();
+  };
+
   beforeEach(() => {
     // cy.visit('/dataset/95f8eac4-fd1f-4b35-8472-5c87e9425dfa')
     cy.stubMetadata();
@@ -13,12 +17,14 @@ context('Dataset stubbed', () => {
   })
 
   it('I see the file is available to download for each dataset', () => {
+    cy.findByRole('tab', { name: 'Data', exact: true }).click();
     cy.get('.dc-resource:first-of-type > svg', { timeout: 20000 }).should('have.attr', 'class', 'dkan-icon')
     cy.get(`#resource_1234abcd .dc-resource > a`).should('have.attr', 'href', `http://dkan.localtest.me/sites/default/files/distribution/95f8eac4-fd1f-4b35-8472-5c87e9425dfa/asthma-prevalence-adults-by-year-1945-to-1999.csv`);
   })
 
   // add check to make sure message updates to correct amount of rows
   it('I can filter the each table individually', () => {
+    openDataTables();
     cy.get(`#resource_1234abcd .dc-datatable > thead > .tr > th:nth-child(3) input`).type('35.08');
     cy.wait(500);
     cy.get('.dc-tbody > :nth-child(3) > :nth-child(1)').should('contain', '57');
@@ -26,6 +32,7 @@ context('Dataset stubbed', () => {
   })
 
   it('I can sort each table individually', () => {
+      openDataTables();
       cy.get(`#resource_1234abcd .dc-datatable > thead > .tr > th:nth-child(1) .dc-sort > button`).click()
       cy.get(`#resource_1234abcd .dc-tbody > :nth-child(1) > :nth-child(1)`).should('contain', '1')
       cy.get(`#resource_1234abcd .dc-datatable > thead > .tr > th:nth-child(1) .dc-sort > button`).click()
@@ -71,6 +78,7 @@ context('Dataset stubbed', () => {
 
   // Add check to make sure message updates correctly
   it('I can select the number of rows per page in each table.', () => {
+    openDataTables();
     cy.get(`#resource_1234abcd .-pageInfo`).should('contain', 'Page 1 of 10')
     cy.get(`#resource_1234abcd .page-size-select`).select('50')
     cy.get(`#resource_1234abcd .-pageInfo`, { timeout: 75000 }).should('contain', 'Page 1 of 4')
@@ -79,6 +87,7 @@ context('Dataset stubbed', () => {
   })
 
   it('I can change the density of the data table rows', () => {
+    openDataTables();
     cy.get(`#resource_1234abcd .dc-tbody > tr > :nth-child(1)`, { timeout: 40000 }).should('have.css', 'padding', '5px')
     cy.get(`#resource_1234abcd [title="expanded"]`).click()
     cy.get(`#resource_1234abcd .dc-tbody > tr > :nth-child(1)`, { timeout: 40000 }).should('have.css', 'padding', '21px 5px')
@@ -87,6 +96,7 @@ context('Dataset stubbed', () => {
   })
 
   it.skip('I can resize the data preview columns without changing the other table.', () => {
+    openDataTables();
     cy.get(`#resource_1234abcd .dc-datatable > :nth-child(1) tr > :nth-child(1)`, { timeout: 40000 }).should('have.css', 'width', '217.5px')
     cy.get(`#resource_1234abcd .dc-datatable > :nth-child(1) tr > :nth-child(1) > .dc-c-resize-handle`)
       .trigger('mousedown', { which: 1 })
@@ -99,6 +109,7 @@ context('Dataset stubbed', () => {
   })
 
   it('I can open and close Manage Columns', () => {
+    openDataTables();
     cy.get(`#resource_1234abcd #dc-modal-manage_columns-open`).click()
     // cy.get('#react-aria-modal-dialog #dialog-title').should('contain', 'Display column')
     // Test close button in top right
@@ -115,6 +126,7 @@ context('Dataset stubbed', () => {
   })
 
   it('I can remove and add back data table columns on just one table', () => {
+    openDataTables();
     cy.get(`#resource_1234abcd .dc-datatable > :nth-child(1) tr`, { timeout: 40000 }).children('th').should('have.length', 3)
     cy.get(`.dc-datatable > :nth-child(1) tr th`).should('contain', 'record_number')
     cy.get(`#resource_1234abcd #dc-modal-manage_columns-open`).click()
@@ -132,6 +144,7 @@ context('Dataset stubbed', () => {
   })
 
   it('I can reorder table columns on just one table', () => {
+    openDataTables();
     cy.get(`#resource_1234abcd .dc-datatable:first-of-type > :nth-child(1) > .tr > :nth-child(1)`, { timeout: 40000 }).should('contain', 'record_number')
     cy.get(`#resource_1234abcd #dc-modal-manage_columns-open`).click()
     cy.get(`#dc-modal-manage_columns .dc-modal-body > :nth-child(2)`)

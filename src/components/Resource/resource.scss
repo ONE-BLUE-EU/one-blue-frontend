@@ -1,0 +1,101 @@
+@import "../../theme/variables";
+
+.campaign-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.campaign-resource-card.ant-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.campaign-resource-card .ant-card-head {
+  min-height: 64px;
+}
+
+.campaign-resource-card .ant-card-head-title {
+  white-space: normal;
+}
+
+.campaign-resource-card h2 {
+  font-size: 15px;
+  margin: 0;
+}
+
+.campaign-resource-card .ant-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campaign-card-summary {
+  flex: 1;
+}
+
+.campaign-card-summary .ant-statistic {
+  margin-bottom: 12px;
+}
+
+.campaign-card-summary .ant-statistic-content {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+.campaign-card-summary .ant-statistic-title {
+  font-size: 12px;
+}
+
+.campaign-card-actions,
+.campaign-card-actions .ant-space-item {
+  width: 100%;
+}
+
+.campaign-overview {
+  margin: 16px 0;
+}
+
+.campaign-overview .ant-card-head {
+  background-color: rgb(13 6 6);
+  color: #fff;
+  font-weight: 500;
+  border-radius:3px;
+}
+
+.campaign-card-actions .campaign-explore:not(:disabled) {
+  background-color: $secondary;
+  border-color: $secondaryDark;
+  color: $textColor;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $secondaryDark;
+    border-color: $secondaryDark;
+    color: $textColor;
+  }
+}
+
+.campaign-overview .ant-statistic-content {
+  font-size: 20px;
+}
+
+.campaign-overview-note {
+  margin: 16px 0 0;
+  font-size: 12px;
+}
+
+@media (max-width: 991px) {
+  .campaign-resource-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .campaign-resource-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
